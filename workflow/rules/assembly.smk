@@ -126,5 +126,5 @@ rule tidy_shiver_output:
         "results/{id}/{id}.fasta"
     shell:
         """
-        strace (seqtk seq -l0 {input} | head -n2 | sed 's/?/N/g' > {output}) 
+        strace -f bash -c "seqtk seq -l0 {input} | head -n2 | sed 's/?/N/g' > {output}"
         """
